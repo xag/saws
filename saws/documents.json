@@ -1,0 +1,703 @@
+{
+ "documents": [
+  {
+   "id": "festool-ts-55-manual",
+   "publisher": "Festool GmbH",
+   "title": "TS 55 FEBQ, TS 55 FEQ: original operating manual",
+   "url": "https://media.cdn.festool.io/productmedia/Images/attachment/47413f2f-5dc8-11f1-8a72-005056b3ad01.pdf",
+   "fetched": "2026-11-14",
+   "sha256": "37972ff5a224277a58f088c0b7756c65d2695df3344c94d22409ad9571a91994",
+   "file": "plunge-festool-ts55-manual.pdf",
+   "clauses": [
+    {
+     "id": "saw-blades",
+     "locator": "English, 3.1 Saw blades",
+     "params": {
+      "kerf": {
+       "value": 1.8,
+       "unit": "mm",
+       "printed": "Cutting width 1.8 mm"
+      }
+     }
+    },
+    {
+     "id": "cutting-depth",
+     "locator": "English, 7.2 Adjusting the cutting depth",
+     "params": {
+      "max_cut_depth": {
+       "value": 55,
+       "unit": "mm",
+       "printed": "Cutting depth without guide rail max. 55 mm"
+      },
+      "max_cut_depth_on_rail": {
+       "value": 51,
+       "unit": "mm",
+       "printed": "Cutting depth with FS guide rail max. 51 mm"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "bosch-gkt-55-gce-page",
+   "publisher": "Robert Bosch Power Tools GmbH",
+   "title": "GKT 55 GCE Professional: product page",
+   "url": "https://www.bosch-professional.com/fr/fr/products/gkt-55-gce-0601675001",
+   "fetched": "2026-11-14",
+   "sha256": "c9ffa3ae8a3b85d334e5dd6395c9adc7c5eb94b166c76f3849c605bae2a39d3b",
+   "file": "plunge-bosch-gkt55-page.html",
+   "clauses": [
+    {
+     "id": "delivery",
+     "locator": "Contenu de la livraison: the saw blade supplied (diameter x cutting width/body x bore)",
+     "params": {
+      "kerf": {
+       "value": 1.8,
+       "unit": "mm",
+       "printed": "165 x 1,8/1,3 x 20 mm",
+       "column": 1
+      },
+      "blade_thickness": {
+       "value": 1.3,
+       "unit": "mm",
+       "printed": "165 x 1,8/1,3 x 20 mm",
+       "column": 2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "bosch-gkt-55-gce-manual",
+   "publisher": "Robert Bosch Power Tools GmbH",
+   "title": "GKT 55 GCE Professional: original instructions",
+   "url": "https://www.bosch-professional.com/binary/manualsmedia/o333224v21_160992A5H4_202003.pdf",
+   "fetched": "2026-11-14",
+   "sha256": "feb0ec36c665282965445a8262283eeab8fe18693c29d0699559c4a05f85cf40",
+   "file": "plunge-bosch-gkt55.pdf",
+   "clauses": [
+    {
+     "id": "technical-data",
+     "locator": "English, Technical data",
+     "params": {
+      "max_kerf": {
+       "value": 2.6,
+       "unit": "mm",
+       "printed": "Max. tooth thickness/offset mm 2.6"
+      },
+      "max_cut_depth": {
+       "value": 57,
+       "unit": "mm",
+       "printed": "Max. cutting depth – at a 0° mitre/bevel angle mm 57",
+       "column": 1
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "makita-sp6000-manual",
+   "publisher": "Makita Canada Inc.",
+   "title": "SP6000 Plunge Cut Circular Saw: instruction manual",
+   "url": "https://www.makita.ca/data/upload/owners_manuals/SP6000%20-%20EN%20FR%20SP_Bill29.pdf",
+   "fetched": "2026-11-14",
+   "sha256": "94d25b4357fcfa8b45b529dd3301b803469de7e8696fc3227fe54f85e18d277c",
+   "file": "plunge-makita-sp6000.pdf",
+   "clauses": [
+    {
+     "id": "specifications",
+     "locator": "English, Specifications",
+     "params": {
+      "max_cut_depth": {
+       "value": 56,
+       "unit": "mm",
+       "printed": "Max. cutting depth at 90° 56 mm",
+       "column": 1
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "bosch-gks-190-manual",
+   "publisher": "Robert Bosch Power Tools GmbH",
+   "title": "GKS 190 Professional: original instructions",
+   "url": "https://www.bosch-professional.com/binary/manualsmedia/o404098v21_160992A8CB_202211.pdf",
+   "fetched": "2026-11-14",
+   "sha256": "98bd8202c78a0b7e7df27920bb0b2119d1d965e13bbd803ee1bca885fd32e140",
+   "file": "circ-bosch-gks190.pdf",
+   "clauses": [
+    {
+     "id": "technical-data",
+     "locator": "English, Technical data",
+     "params": {
+      "max_cut_depth": {
+       "value": 67,
+       "unit": "mm",
+       "printed": "Max. cutting depth – at a 0° mitre/bevel angle mm 67",
+       "column": 1
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "makita-hs7601-manual",
+   "publisher": "Makita Corporation (PDF hosted by retailer mediaexpert.pl)",
+   "title": "HS7601 Circular Saw: instruction manual",
+   "url": "https://www.mediaexpert.pl/products/files/14/1432625/instrukcja-obslugi-MAKITA-HS7601.pdf",
+   "fetched": "2026-11-14",
+   "sha256": "b639e9244cf7273b918e77d36cd0be1f44941cd5a0babb9e8bc53d4e9716934a",
+   "file": "circ-makita-hs7601.pdf",
+   "clauses": [
+    {
+     "id": "specifications",
+     "locator": "English, Specifications",
+     "params": {
+      "max_cut_depth": {
+       "value": 66,
+       "unit": "mm",
+       "printed": "Max. cutting depth at 0° 66 mm",
+       "column": 1
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "dewalt-dwe560-manual",
+   "publisher": "DeWalt / Stanley Black & Decker (service.blackanddecker.co.za)",
+   "title": "DWE560, DWE565: instruction manual",
+   "url": "https://service.blackanddecker.co.za/i/DEWALT/GLOBALBOM/XJ/DWE565/1/Instruction_Manual/EN/DWE560-DWE565-TYP1_XE.pdf",
+   "fetched": "2026-11-14",
+   "sha256": "c667f7c3913452694495c5b7d7bfc842ca2ad025d7741dbbcefaa75c8710dac6",
+   "file": "circ-dewalt-dwe560.pdf",
+   "clauses": [
+    {
+     "id": "technical-data",
+     "locator": "Technical data, column DWE560",
+     "params": {
+      "max_cut_depth": {
+       "value": 65,
+       "unit": "mm",
+       "printed": "Maximum depth of cut at: 90° mm 65 65",
+       "column": 1
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "bosch-gts-635-216-page",
+   "publisher": "Robert Bosch Power Tools GmbH (bosch-professional.com/fr)",
+   "title": "GTS 635-216 Professional: product page",
+   "url": "https://www.bosch-professional.com/fr/fr/products/gts-635-216-0601B42000",
+   "fetched": "2026-11-14",
+   "sha256": "15910971c4d388ff409f2551d2697dba531d50d16629e42860a35ae185b68152",
+   "file": "table-bosch-gts635-page.html",
+   "clauses": [
+    {
+     "id": "technical-data",
+     "locator": "Caractéristiques techniques",
+     "params": {
+      "max_cut_depth": {
+       "value": 70,
+       "unit": "mm",
+       "printed": "Hauteur de coupe à 90° 70 mm",
+       "column": 1
+      }
+     }
+    },
+    {
+     "id": "delivery",
+     "locator": "Inclus dans toutes les variantes: the saw blade supplied, 2 608 838 410",
+     "params": {
+      "blade_thickness": {
+       "value": 1.6,
+       "unit": "mm",
+       "printed": "Optiline Wood, 216 x 30 x 1,6 mm",
+       "column": 2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "bosch-blade-2-608-838-410-page",
+   "publisher": "Robert Bosch Power Tools GmbH (bosch-professional.com/fr)",
+   "title": "Lame de scie circulaire PRO Wood 216 x 2,6 x 30 mm, T22, 2 608 838 410: product page",
+   "url": "https://www.bosch-professional.com/fr/fr/lame-de-scie-circulaire-filaire-pro-wood-pour-scies-sur-table-avec-encoches-de-dilatation-3089788-ocs-ac/?sku=2608838410",
+   "fetched": "2026-11-14",
+   "sha256": "499d3847c5f96872d7ba8cecd76176ae0158938373fd9c4f7673ee53d3f8ec08",
+   "file": "table-bosch-blade-2608838410.html",
+   "clauses": [
+    {
+     "id": "variants",
+     "locator": "Vue d'ensemble des variantes, row 2 608 838 410 (diameter, bore, thickness, cutting width)",
+     "params": {
+      "blade_thickness": {
+       "value": 1.6,
+       "unit": "mm",
+       "printed": "2 608 838 410 216 30 1,6 2,6",
+       "column": 6
+      },
+      "kerf": {
+       "value": 2.6,
+       "unit": "mm",
+       "printed": "2 608 838 410 216 30 1,6 2,6",
+       "column": 7
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "makita-mlt100-manual",
+   "publisher": "Makita (Hong Kong site)",
+   "title": "MLT100 Table Saw: instruction manual",
+   "url": "https://makita.com.hk/upload/product/192/file_en/5885c0374d522.pdf",
+   "fetched": "2026-11-14",
+   "sha256": "884541346fd39e75070bd425beea5bbf1ab165f4254aeead7ea22cbdfa8f1ac4",
+   "file": "table-makita-mlt100.pdf",
+   "clauses": [
+    {
+     "id": "specifications",
+     "locator": "Specifications, Max. cutting capacities",
+     "params": {
+      "max_cut_depth": {
+       "value": 90.5,
+       "unit": "mm",
+       "printed": "90° 90.5 mm",
+       "column": 1
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "dewalt-dwe7492-manual",
+   "publisher": "DeWALT (Stanley Black & Decker service site)",
+   "title": "DWE7492: instruction manual",
+   "url": "https://service.blackanddecker.co.uk/i/DEWALT/GLOBALBOM/GB/DWE7492/2/Instruction_Manual/EN/NA377613_DWE7492_T1_GB_LX.pdf",
+   "fetched": "2026-11-14",
+   "sha256": "d018a39509e1e0a30e2db8a0aafc52fbd92f8efb215f8e3f889e998c20db6dad",
+   "file": "table-dewalt-dwe7492.pdf",
+   "clauses": [
+    {
+     "id": "technical-data",
+     "locator": "Technical data",
+     "params": {
+      "blade_thickness": {
+       "value": 2.0,
+       "unit": "mm",
+       "printed": "Blade body thickness mm 2.0 2.0",
+       "column": 0
+      },
+      "max_cut_depth": {
+       "value": 77,
+       "unit": "mm",
+       "printed": "Depth of cut at 90° mm 77 77",
+       "column": 1
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "metabo-kgs-m-manual",
+   "publisher": "Metabowerke GmbH (metabo-service.com)",
+   "title": "KGS 216 M, KGS 254 M, KGS 305 M: original instructions",
+   "url": "https://www.metabo-service.com/manuals/17030029_00_1123_180_A4_de_en_fr_nl_it_es_pt_sv_fi_no_da_pl_hu_ru_hy_kk_ky_uk_cs_et_lt_lv_ar_%20KGS-M-Range-ab%202022-34-spr.pdf",
+   "fetched": "2026-11-14",
+   "sha256": "b449eb03cab9271b32a27ac38b6e462473f9fa9af23aa1f8d39155399184814d",
+   "file": "mitre-metabo-kgs-m.pdf",
+   "clauses": [
+    {
+     "id": "specification",
+     "locator": "Specification table, row b (max. tooth width of the saw blade), columns KGS 216 M, KS 216 M, KGS 254 M, KGS 305 M, KGS 18 LTX BL 216, 254, 305",
+     "params": {
+      "max_kerf_kgs_216_m": {
+       "value": 2.4,
+       "unit": "mm",
+       "printed": "b mm 2,4 2,4 2,6 3,0 2,4 2,6 3,0",
+       "column": 0
+      },
+      "max_kerf_kgs_254_m": {
+       "value": 2.6,
+       "unit": "mm",
+       "printed": "b mm 2,4 2,4 2,6 3,0 2,4 2,6 3,0",
+       "column": 2
+      }
+     }
+    },
+    {
+     "id": "capacity-216",
+     "locator": "Cutting capacity b x h, KGS 216 M, mitre 0°, bevel 0°",
+     "params": {
+      "max_cut_depth": {
+       "value": 70,
+       "unit": "mm",
+       "printed": "216 M, KGS 18 LTX BL 216 b x h (mm) 0° 15° 22,5° 30° 45° 0° 305 x 70",
+       "column": 10
+      }
+     }
+    },
+    {
+     "id": "capacity-254",
+     "locator": "Cutting capacity b x h, KGS 254 M, mitre 0°, bevel 0°",
+     "params": {
+      "max_cut_depth": {
+       "value": 92,
+       "unit": "mm",
+       "printed": "254 M, KGS 18 LTX BL 254 b x h (mm) 0° 15° 22,5° 30° 45° 0° 305 x 92",
+       "column": 10
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "makita-ls1018l-manual",
+   "publisher": "Makita (Mexico site)",
+   "title": "LS1018, LS1018L Slide Compound Miter Saw: instruction manual",
+   "url": "https://makita.com.mx/wp-content/uploads/2025/04/Manual_LS1018L.pdf",
+   "fetched": "2026-11-14",
+   "sha256": "0417e6a513982867797d084acd42cb0fb9bc7ee5f0795e1ff0269acf10a36df5",
+   "file": "mitre-makita-ls1018l.pdf",
+   "clauses": [
+    {
+     "id": "capacities",
+     "locator": "Specifications, Max. cutting capacities (H x W), 0° mitre, 0° bevel",
+     "params": {
+      "max_cut_depth": {
+       "value": 91,
+       "unit": "mm",
+       "printed": "91 mm x 305 mm",
+       "column": 0
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "bosch-gst-160-manual",
+   "publisher": "Robert Bosch Power Tools GmbH",
+   "title": "GST 160 CE, GST 160 BCE Professional: original instructions",
+   "url": "https://www.bosch-professional.com/binary/manualsmedia/o622068v21_160992AE5S_202511.pdf",
+   "fetched": "2026-11-14",
+   "sha256": "04f158e3fe438f1fe5fac1a57cf1cdec012d1b263a9fa51cdb4fd2d024d53297",
+   "file": "jig-bosch-gst160-manual.pdf",
+   "clauses": [
+    {
+     "id": "technical-data",
+     "locator": "English, Technical data",
+     "params": {
+      "max_cut_depth": {
+       "value": 160,
+       "unit": "mm",
+       "printed": "Max. cutting depth – In wood mm 160 160",
+       "column": 0
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "makita-4350fct-sheet",
+   "publisher": "Makita France",
+   "title": "4350FCTJ: fiche produit",
+   "url": "https://www.makita.fr/data/sr/productinfo/generated/4350fctj_fiche_produit.pdf",
+   "fetched": "2026-11-14",
+   "sha256": "83151dba1665860c3d6228c724f4dbe8de9d43232f0da4239ae5840c2e7308f6",
+   "file": "jig-makita-4350fctj-fiche.pdf",
+   "clauses": [
+    {
+     "id": "characteristics",
+     "locator": "Caractéristiques techniques",
+     "params": {
+      "max_cut_depth": {
+       "value": 135,
+       "unit": "mm",
+       "printed": "Capacité max. de coupe en bois (90 °) 135 mm",
+       "column": 1
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "striebig-catalogue-fr",
+   "publisher": "Striebig AG",
+   "title": "Catalogue général (français)",
+   "url": "https://www.striebig.com/07_downloads/prospekte/gesamtprospekt/katalog-fr-small.pdf",
+   "fetched": "2026-11-14",
+   "sha256": "af736def77b97fae52d8d32c1315c5b759e4e83f91b1b1843219785a4d8df738",
+   "file": "panel-striebig-catalogue-fr.pdf",
+   "clauses": [
+    {
+     "id": "compact",
+     "locator": "p. 22, données techniques COMPACT (type 6220)",
+     "params": {
+      "max_cut_depth": {
+       "value": 60,
+       "unit": "mm",
+       "printed": "ca. 910 kg Profondeur de coupe 60 mm",
+       "column": 1
+      }
+     }
+    },
+    {
+     "id": "standard",
+     "locator": "p. 22, données techniques STANDARD TRK1 (type 6224)",
+     "params": {
+      "max_cut_depth": {
+       "value": 80,
+       "unit": "mm",
+       "printed": "Poids de la scie TRK1 ca. 1.100 kg Profondeur de coupe 80 mm",
+       "column": 2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "holz-her-sector-brochure",
+   "publisher": "HOLZ-HER GmbH (WEINIG group)",
+   "title": "SECTOR 1255, SECTOR 1260 vertical panel saws: brochure",
+   "url": "https://www.weinig.com/fileadmin/assets/holzher/products/panel_saws/1255_1260/en_Prospekt_SECTOR_1255_1260_HOLZHER.pdf",
+   "fetched": "2026-11-14",
+   "sha256": "b9b845f9429baa755078ba29d3ec81101c7089f471f721775b61ca5fbab02d12",
+   "file": "panel-holzher-sector-1255-1260-en.pdf",
+   "clauses": [
+    {
+     "id": "technical-data",
+     "locator": "Technical data, column SECTOR 1255",
+     "params": {
+      "max_cut_depth": {
+       "value": 60,
+       "unit": "mm",
+       "printed": "Cutting depth (mm) 60 60",
+       "column": 0
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "elcon-d-sheet",
+   "publisher": "Elcon (Leimuiden, NL); file hosted by the dealer Höchsmann (wtp.hoechsmann.com)",
+   "title": "D 155, D 185, D 215: data sheet",
+   "url": "https://wtp.hoechsmann.com/de/lexikon/pdf/elc_d155_215.pdf",
+   "fetched": "2026-11-14",
+   "sha256": "41992c379d04f9e4efa4ca5c56fd5b1184004eb5f19c3dfbac001a7ce3f5383f",
+   "file": "panel-elcon-d155-215.pdf",
+   "clauses": [
+    {
+     "id": "technical-data",
+     "locator": "Technical data",
+     "params": {
+      "max_cut_depth": {
+       "value": 60,
+       "unit": "mm",
+       "printed": "Maximum depth of cut 60 mm"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "z-saw-iii-265-page",
+   "publisher": "Okada Kinzoku Kogyosho (Z-saw)",
+   "title": "ゼットソーⅢ265 (15078): 製品ページ",
+   "url": "https://www.z-saw.co.jp/product_top/product/15078/",
+   "fetched": "2026-11-14",
+   "sha256": "64ada0fa35156991b648b328a225d0e8eff0d2ce3afabb9277f6b0152fbe32cc",
+   "file": "pull-zsaw-15078.html",
+   "clauses": [
+    {
+     "id": "spec",
+     "locator": "製品のスペック",
+     "params": {
+      "blade_thickness": {
+       "value": 0.6,
+       "unit": "mm",
+       "printed": "板厚／0.60mm"
+      },
+      "kerf": {
+       "value": 0.92,
+       "unit": "mm",
+       "printed": "切り幅／0.92mm"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "z-saw-iii-300-page",
+   "publisher": "Okada Kinzoku Kogyosho (Z-saw)",
+   "title": "ゼットソーⅢ300 (15035): 製品ページ",
+   "url": "https://www.z-saw.co.jp/product_top/product/15035/",
+   "fetched": "2026-11-14",
+   "sha256": "2f3111f5298729806a4c8b20d79db4a3c6df718cea2c2ab146bf30bdf50fe9b6",
+   "file": "pull-zsaw-15035.html",
+   "clauses": [
+    {
+     "id": "spec",
+     "locator": "製品のスペック",
+     "params": {
+      "blade_thickness": {
+       "value": 0.7,
+       "unit": "mm",
+       "printed": "板厚／0.70mm"
+      },
+      "kerf": {
+       "value": 1.07,
+       "unit": "mm",
+       "printed": "切り幅／1.07mm"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "gyokucho-blue-hard-page",
+   "publisher": "Gyokucho (玉鳥産業)",
+   "title": "レザーソー青雲作ブルーハード: 製品ページ",
+   "url": "https://www.gyokucho.co.jp/products/series/double-edge/%E3%83%AC%E3%82%B6%E3%83%BC%E3%82%BD%E3%83%BC%E9%9D%92%E9%9B%B2%E4%BD%9C%E3%80%80%E3%83%96%E3%83%AB%E3%83%BC%E3%83%8F%E3%83%BC%E3%83%89/",
+   "fetched": "2026-11-14",
+   "sha256": "9ed35efc513a3fdeeeabcb5bada45a4cbfc73a22eef0c9aac49cfadedd98e9dc",
+   "file": "pull-gyokucho-bluehard.html",
+   "clauses": [
+    {
+     "id": "spec-210",
+     "locator": "仕様, 本体 649 (刃長, 板厚, ピッチ, 参考切幅)",
+     "params": {
+      "blade_thickness": {
+       "value": 0.45,
+       "unit": "mm",
+       "printed": "本体 649 レザーソー青雲作ブルーハード 210 本体 210 0.45 1.5（寸20枚目） 0.72",
+       "column": 3
+      },
+      "kerf": {
+       "value": 0.72,
+       "unit": "mm",
+       "printed": "本体 649 レザーソー青雲作ブルーハード 210 本体 210 0.45 1.5（寸20枚目） 0.72",
+       "column": 6
+      }
+     }
+    },
+    {
+     "id": "spec-240",
+     "locator": "仕様, 本体 650 (刃長, 板厚, ピッチ, 参考切幅)",
+     "params": {
+      "blade_thickness": {
+       "value": 0.5,
+       "unit": "mm",
+       "printed": "本体 650 レザーソー青雲作ブルーハード 240 本体 240 0.5 1.7（寸18枚目） 0.83",
+       "column": 3
+      },
+      "kerf": {
+       "value": 0.83,
+       "unit": "mm",
+       "printed": "本体 650 レザーソー青雲作ブルーハード 240 本体 240 0.5 1.7（寸18枚目） 0.83",
+       "column": 6
+      }
+     }
+    },
+    {
+     "id": "spec-270",
+     "locator": "仕様, 本体 655 (刃長, 板厚, ピッチ, 参考切幅)",
+     "params": {
+      "blade_thickness": {
+       "value": 0.6,
+       "unit": "mm",
+       "printed": "本体 655 レザーソー青雲作ブルーハード 270 本体 270 0.6 2.5（寸12枚目） 0.94",
+       "column": 3
+      },
+      "kerf": {
+       "value": 0.94,
+       "unit": "mm",
+       "printed": "本体 655 レザーソー青雲作ブルーハード 270 本体 270 0.6 2.5（寸12枚目） 0.94",
+       "column": 6
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "gyokucho-orizuru-dozuki-240-page",
+   "publisher": "Gyokucho (玉鳥産業)",
+   "title": "レザーソー折鶴240 導突: 製品ページ",
+   "url": "https://www.gyokucho.co.jp/products/series/orizuru/orizurudozuki/",
+   "fetched": "2026-11-14",
+   "sha256": "827202ba7f655b71441090da7cd18a0ae1e792e3c2ad83e5dac90d3817d54f6a",
+   "file": "pull-gyokucho-dozuki240.html",
+   "clauses": [
+    {
+     "id": "spec",
+     "locator": "仕様, 2845 (刃長, 板厚, ピッチ, 参考切幅)",
+     "params": {
+      "blade_thickness": {
+       "value": 0.3,
+       "unit": "mm",
+       "printed": "2845 レザーソー折鶴240 導突 本体 240 0.3 1.0 0.46",
+       "column": 3
+      },
+      "kerf": {
+       "value": 0.46,
+       "unit": "mm",
+       "printed": "2845 レザーソー折鶴240 導突 本体 240 0.3 1.0 0.46",
+       "column": 5
+      }
+     }
+    },
+    {
+     "id": "use",
+     "locator": "用途",
+     "params": {
+      "max_cut_depth": {
+       "value": 35,
+       "unit": "mm",
+       "printed": "最大35ｍｍ厚までの板材の仕上加工が可能です"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "bahco-2600-page",
+   "publisher": "Bahco (SNA Europe)",
+   "title": "ERGO Superior handsaw 2600: technical details",
+   "url": "https://www.bahco.com/int_en/ergotm-superiortm-saws-for-plaster-boards-of-wood-based-materials-pb_2600_.html",
+   "fetched": "2026-11-14",
+   "sha256": "b2f4e3228c1a80d78e7031da041beb943dd5cbb25a51a3c88fed9d6916493eee",
+   "file": "hand-bahco-2600.html",
+   "clauses": [
+    {
+     "id": "2600-22",
+     "locator": "Technical details, row 2600-22-XT-HP",
+     "params": {
+      "blade_thickness": {
+       "value": 1.03,
+       "unit": "mm",
+       "printed": "2600-22-XT-HP 550 mm 22 in 9/10 1.03 mm",
+       "column": 6
+      }
+     }
+    },
+    {
+     "id": "2600-19",
+     "locator": "Technical details, row 2600-19-XT-HP",
+     "params": {
+      "blade_thickness": {
+       "value": 1.03,
+       "unit": "mm",
+       "printed": "2600-19-XT-HP 475 mm 19 in 9/10 1.03 mm",
+       "column": 6
+      }
+     }
+    }
+   ]
+  }
+ ]
+}

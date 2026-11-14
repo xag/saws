@@ -1,0 +1,32 @@
+[
+  {
+    "path": "a-saw-states-only-what-its-maker-prints",
+    "kind": "decision",
+    "digest": "bd8b57053214"
+  },
+  {
+    "path": "a-saw-states-only-what-its-maker-prints/a-typical-kerf-per-kind",
+    "kind": "alternative",
+    "digest": "d771380d90e4"
+  },
+  {
+    "path": "a-saw-states-only-what-its-maker-prints/body-as-kerf",
+    "kind": "alternative",
+    "digest": "f904e24c4775"
+  },
+  {
+    "path": "the-saws-are-one-package",
+    "kind": "decision",
+    "digest": "7cbe240c278e"
+  },
+  {
+    "path": "the-saws-are-one-package/a-package-per-maker",
+    "kind": "alternative",
+    "digest": "4dcb2ef0ca3b"
+  },
+  {
+    "path": "the-saws-are-one-package/in-wood-panels",
+    "kind": "alternative",
+    "digest": "ae55b9c725c2"
+  }
+]
