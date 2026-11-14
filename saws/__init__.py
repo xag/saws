@@ -108,10 +108,48 @@ SAWS = [
 SOURCES = "sources"
 TOOLS = "tools"
 
+# saw id: the clause its maker prints the diameter of its blade in, for the saws whose maker prints no blade's cut
+BLADES = {
+    "bosch-gks-190": "bosch-gks-190-manual/technical-data/blade_diameter",
+    "makita-hs7601": "makita-hs7601-manual/specifications/blade_diameter",
+    "dewalt-dwe560": "dewalt-dwe560-manual/technical-data/blade_diameter",
+    "makita-sp6000": "makita-sp6000-manual/specifications/blade_diameter",
+    "makita-mlt100": "makita-mlt100-manual/specifications/blade_diameter",
+    "makita-ls1018l": "makita-ls1018l-manual/capacities/blade_diameter",
+    "dewalt-dwe7492": "dewalt-dwe7492-manual/technical-data/blade_diameter",
+}
+USUAL_AMONG = 2  # a diameter is usual when this many catalogues list wood blades of it
+
 
 @lru_cache(maxsize=1)
 def documents() -> dict[str, dict]:
     return {d["id"]: d for d in json.loads((HERE / "documents.json").read_text(encoding="utf-8"))["documents"]}
+
+
+@lru_cache(maxsize=1)
+def catalogues() -> dict[str, dict]:
+    """The blade catalogues and the rows read from each: [page, D, kerf, body], in mm."""
+    return {c["id"]: c for c in json.loads((HERE / "usual.json").read_text(encoding="utf-8"))["catalogues"]}
+
+
+def blades(catalogue: str) -> dict[int, dict]:
+    """A catalogue's wood blades by diameter: the narrowest and widest cut, how many blades, on which pages."""
+    out: dict[int, dict] = {}
+    for page, d, kerf, _body in catalogues()[catalogue]["rows"]:
+        b = out.setdefault(d, {"narrowest": kerf, "widest": kerf, "blades": 0, "pages": set()})
+        b["narrowest"], b["widest"] = min(b["narrowest"], kerf), max(b["widest"], kerf)
+        b["blades"] += 1
+        b["pages"].add(page)
+    return out
+
+
+def usual() -> dict[int, dict[str, dict]]:
+    """Each usual blade diameter, {catalogue: its blades of it}: a diameter USUAL_AMONG catalogues list."""
+    by: dict[int, dict[str, dict]] = {}
+    for c in catalogues():
+        for d, b in blades(c).items():
+            by.setdefault(d, {})[c] = b
+    return {d: cs for d, cs in sorted(by.items()) if len(cs) >= USUAL_AMONG}
 
 
 def _value(ref: str) -> dict:
@@ -137,22 +175,84 @@ def sources() -> list[Node]:
     return out
 
 
+def _mm(value: float, note: str) -> Quantity:
+    return Quantity(value=value, unit="mm", provenance="published", grounded=True, note=note)
+
+
+def catalogue_sources() -> list[Node]:
+    """One source per blade catalogue, one clause per blade diameter it lists: the narrowest and the widest cut
+    of its wood blades of that diameter, each a value a row prints."""
+    out = []
+    for c in catalogues().values():
+        clauses = []
+        for d, b in sorted(blades(c["id"]).items()):
+            pages = ", ".join(str(p) for p in sorted(b["pages"]))
+            where = f"{b['blades']} blade{'s' if b['blades'] > 1 else ''} of {d} mm, p. {pages}"
+            clauses.append(Node(id=f"d{d}", kind="clause",
+                                payload={"locator": f"{c['locator']}: {where}", "blades": b["blades"],
+                                         "pages": sorted(b["pages"])},
+                                params={"narrowest_kerf": _mm(b["narrowest"], f"the narrowest cut of the {where}"),
+                                        "widest_kerf": _mm(b["widest"], f"the widest cut of the {where}")}))
+        out.append(Node(id=c["id"], kind="source", name=f"{c['publisher']}: {c['title']}",
+                        payload={"publisher": c["publisher"], "url": c["url"], "fetched": c["fetched"],
+                                 "sha256": c["sha256"], "licence": "copyrighted", "locator": c["locator"],
+                                 "capture": "private copy, identified by its sha256"},
+                        children=clauses))
+    return out
+
+
+def _usual_kerf(d: int) -> tuple[Quantity, list[str]]:
+    """The widest cut of the usual blades of d mm, derived from each catalogue's clause, and those clauses."""
+    cs = usual()[d]
+    widest = max(b["widest"] for b in cs.values())
+    narrowest = min(b["narrowest"] for b in cs.values())
+    n = sum(b["blades"] for b in cs.values())
+    makers = ", ".join(catalogues()[c]["publisher"] for c in cs)
+    q = Quantity(value=widest, unit="mm", provenance="derived", grounded=True,
+                 derived_from=[f"{SOURCES}/{c}/d{d}/widest_kerf" for c in cs],
+                 note=f"the widest cut of the {n} wood blades of {d} mm that {makers} list (the narrowest {narrowest})")
+    return q, [f"{SOURCES}/{c}/d{d}" for c in cs]
+
+
+def usual_tools() -> list[Node]:
+    """One tool per usual blade diameter: any circular saw whose blade is that size, its cut the widest of the
+    usual blades, for a saw the package does not name."""
+    out = []
+    for d, cs in usual().items():
+        q, per = _usual_kerf(d)
+        out.append(Node(id=f"usual-blade-{d}", kind="tool", name=f"A circular saw with a {d} mm blade",
+                        payload={"maker": "any", "saw_kind": "circular saw",
+                                 "does": f"any plunge, hand-held, mitre or table saw whose blade is {d} mm across",
+                                 "blade_diameter_mm": d,
+                                 "usual": {"narrowest": min(b["narrowest"] for b in cs.values()),
+                                           "widest": q.value, "blades": sum(b["blades"] for b in cs.values())}},
+                        params={"max_kerf": q}, links={"per": per}))
+    return out
+
+
 def tools() -> list[Node]:
-    """One tool per saw, each param derived from the clause its maker printed it in."""
+    """One tool per saw, each param derived from the clause its maker printed it in, then the usual blades. A saw
+    whose maker prints no blade's cut but its blade's diameter names, in its payload's blade, that diameter and
+    the usual blade of it: the tool a design cuts with when nobody has measured the saw's cut."""
     out = []
     for id_, name, kind, does, refs in SAWS:
         params = {p: Quantity(value=float(_value(ref)["value"]), unit=_value(ref)["unit"], provenance="derived",
                               grounded=True, derived_from=[f"{SOURCES}/{ref}"],
                               note=f"as printed: {_value(ref)['printed']}")
                   for p, ref in refs.items()}
-        per = sorted({f"{SOURCES}/{ref.rsplit('/', 1)[0]}" for ref in refs.values()})
-        out.append(Node(id=id_, kind="tool", name=name,
-                        payload={"maker": documents()[next(iter(refs.values())).split("/")[0]]["publisher"],
-                                 "saw_kind": kind, "does": does},
-                        params=params, links={"per": per}))
-    return out
+        payload = {"maker": documents()[next(iter(refs.values())).split("/")[0]]["publisher"],
+                   "saw_kind": kind, "does": does}
+        if id_ in BLADES:
+            d = int(_value(BLADES[id_])["value"])
+            payload["blade"] = {"diameter_mm": d, "per": f"{SOURCES}/{BLADES[id_]}",
+                                "usual": f"{TOOLS}/usual-blade-{d}" if d in usual() else None}
+        read = [*refs.values(), *([BLADES[id_]] if id_ in BLADES else [])]
+        per = sorted({f"{SOURCES}/{ref.rsplit('/', 1)[0]}" for ref in read})
+        out.append(Node(id=id_, kind="tool", name=name, payload=payload, params=params, links={"per": per}))
+    return out + usual_tools()
 
 
 def knowledge() -> list[Node]:
     """The branches to merge beside furniture-design's: the sources and the saws."""
-    return [Node(id=SOURCES, kind="", children=sources()), Node(id=TOOLS, kind="", children=tools())]
+    return [Node(id=SOURCES, kind="", children=sources() + catalogue_sources()),
+            Node(id=TOOLS, kind="", children=tools())]

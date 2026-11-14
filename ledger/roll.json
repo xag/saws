@@ -15,6 +15,26 @@
     "digest": "f904e24c4775"
   },
   {
+    "path": "a-usual-blade-is-a-tool-of-its-own",
+    "kind": "decision",
+    "digest": "8941df264515"
+  },
+  {
+    "path": "a-usual-blade-is-a-tool-of-its-own/a-usual-cut-per-kind-of-saw",
+    "kind": "alternative",
+    "digest": "1611be02817e"
+  },
+  {
+    "path": "a-usual-blade-is-a-tool-of-its-own/the-narrowest-or-middle-cut",
+    "kind": "alternative",
+    "digest": "f617bd317268"
+  },
+  {
+    "path": "a-usual-blade-is-a-tool-of-its-own/the-usual-cut-on-the-makers-saw",
+    "kind": "alternative",
+    "digest": "570d64d15dec"
+  },
+  {
     "path": "the-saws-are-one-package",
     "kind": "decision",
     "digest": "7cbe240c278e"

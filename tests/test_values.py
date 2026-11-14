@@ -49,7 +49,7 @@ def test_every_value_is_printed_in_the_document_fetched():
 
 
 def test_every_saw_reads_its_values_from_its_makers_clauses():
-    by_id = {n.id: n for n in knowledge()[1].children}
+    by_id = {n.id: n for n in knowledge()[1].children if not n.id.startswith("usual-blade-")}
     assert set(by_id) == {s[0] for s in SAWS}
     assert by_id["festool-ts-55"].params["kerf"].value == 1.8
     assert by_id["bosch-gts-635-216"].params["kerf"].value == 2.6

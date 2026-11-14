@@ -113,6 +113,11 @@
        "unit": "mm",
        "printed": "Max. cutting depth at 90° 56 mm",
        "column": 1
+      },
+      "blade_diameter": {
+       "value": 165,
+       "unit": "mm",
+       "printed": "Blade diameter 165 mm"
       }
      }
     }
@@ -136,6 +141,11 @@
        "unit": "mm",
        "printed": "Max. cutting depth – at a 0° mitre/bevel angle mm 67",
        "column": 1
+      },
+      "blade_diameter": {
+       "value": 190,
+       "unit": "mm",
+       "printed": "Max. saw blade diameter mm 190"
       }
      }
     }
@@ -159,6 +169,11 @@
        "unit": "mm",
        "printed": "Max. cutting depth at 0° 66 mm",
        "column": 1
+      },
+      "blade_diameter": {
+       "value": 190,
+       "unit": "mm",
+       "printed": "Blade diameter 190 mm"
       }
      }
     }
@@ -182,6 +197,11 @@
        "unit": "mm",
        "printed": "Maximum depth of cut at: 90° mm 65 65",
        "column": 1
+      },
+      "blade_diameter": {
+       "value": 184,
+       "unit": "mm",
+       "printed": "Blade diameter mm 184 184"
       }
      }
     }
@@ -262,13 +282,18 @@
    "clauses": [
     {
      "id": "specifications",
-     "locator": "Specifications, Max. cutting capacities",
+     "locator": "Specifications: blade diameter; max. cutting capacities",
      "params": {
       "max_cut_depth": {
        "value": 90.5,
        "unit": "mm",
        "printed": "90° 90.5 mm",
        "column": 1
+      },
+      "blade_diameter": {
+       "value": 255,
+       "unit": "mm",
+       "printed": "Blade diameter 255 mm"
       }
      }
     }
@@ -298,6 +323,11 @@
        "unit": "mm",
        "printed": "Depth of cut at 90° mm 77 77",
        "column": 1
+      },
+      "blade_diameter": {
+       "value": 250,
+       "unit": "mm",
+       "printed": "Blade diameter mm 250 250"
       }
      }
     }
@@ -367,13 +397,18 @@
    "clauses": [
     {
      "id": "capacities",
-     "locator": "Specifications, Max. cutting capacities (H x W), 0° mitre, 0° bevel",
+     "locator": "Specifications: blade diameter; max. cutting capacities (H x W), 0° mitre, 0° bevel",
      "params": {
       "max_cut_depth": {
        "value": 91,
        "unit": "mm",
        "printed": "91 mm x 305 mm",
        "column": 0
+      },
+      "blade_diameter": {
+       "value": 255,
+       "unit": "mm",
+       "printed": "Blade diameter 255 mm"
       }
      }
     }

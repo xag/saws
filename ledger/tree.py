@@ -57,6 +57,36 @@ def entries() -> list[Node]:
                      "The teeth are set wider than the body: Gyokucho's 0.5 mm blade cuts 0.83 mm."),
             ],
         ),
+        Node(
+            id="a-usual-blade-is-a-tool-of-its-own", kind="decision",
+            name="The usual blades of a diameter are a tool of their own, usual-blade-<D>: its max_kerf is the widest "
+                 "cut among the wood blades for portable, mitre and table saws that at least two blade catalogues list "
+                 "at that diameter (Freud, Leitz, CMT), every row read again from the copy by a test. A maker's saw "
+                 "keeps only what its maker prints, and names in its payload's blade the diameter its maker prints and "
+                 "the usual blade of it. A design whose saw prints no cut is sawn with that usual blade, so the sheet "
+                 "names the blade it counted and never prints the figure as the saw's",
+            links={"rests_on": ["a-saw-states-only-what-its-maker-prints"]},
+            payload={"decided_on": "2026-11-14",
+                     "the_owner": "Tu n'as que des marques ou tu as aussi des standards pour les scies? Il faut aussi "
+                                  "des standards au sens de mesures habituelles.",
+                     "why": "The catalogues list blades by diameter, each fitting several kinds of machine (CMT: "
+                            "'table and mitre saws, portable machines'), so the diameter is what a usual cut is "
+                            "known by, and a maker prints its saw's. The widest cut leaves room for any of those "
+                            "blades: a narrower one counted makes the parts end shorter than drawn. One catalogue's "
+                            "blade is a maker's, not usual. The standards on blade dimensions found (ISO 2935, withdrawn "
+                            "in 2025; DIN 8083, withdrawn; DIN 8809, tool-steel blades) are sold, and the free pages "
+                            "read of them (iso.org, DIN Media, din.de) show no value."},
+            children=[
+                _alt("the-usual-cut-on-the-makers-saw", "Give a maker's saw the widest usual cut of its blade's diameter "
+                     "as its max_kerf", "The sheet would print the figure as that saw's, which "
+                     "a-saw-states-only-what-its-maker-prints turned down (a-typical-kerf-per-kind)."),
+                _alt("a-usual-cut-per-kind-of-saw", "One usual cut per kind of saw (circular, plunge, mitre, table)",
+                     "The catalogues do not sort blades that way: one blade fits several kinds, and the cut follows the "
+                     "diameter."),
+                _alt("the-narrowest-or-middle-cut", "Count the narrowest or the middle of the usual cuts",
+                     "A cut wider than counted eats into the parts; the widest only spends a little board."),
+            ],
+        ),
     ]
 
 
