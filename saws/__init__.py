@@ -332,7 +332,32 @@ AUTHORITY = {
 }
 
 
+def _say(id_: str, name: str, text: str, *about: str) -> Node:
+    return Node(id=id_, kind="guidance", name=name, payload={"text": " ".join(text.split())},
+                links={"about": list(about)} if about else {})
+
+
+def guidance() -> Node:
+    """What whoever designs with this package is told before reading its nodes (furniture-design's kind
+    guidance): a reader gives it to its assistant and writes none of its own."""
+    return Node(id="guidance", kind="", children=[
+        _say("usual-blades", "A saw whose maker prints no cut", """
+            The saws are among the tools: plunge, circular, table, mitre, jig, panel, pull and hand saws. The
+            makers of portable circular saws, jigsaws and panel saws print no cut, and a rule refuses them. For
+            a circular saw (hand-held, plunge, mitre or table), its payload's blade names the diameter its
+            maker prints and the usual blade of it, tools/usual-blade-<D> (for a saw not listed too: ask the
+            diameter written on its blade): that tool's cut is the widest of the usual wood blades of that
+            size, from blade catalogues, and a part sawn_with it is laid with that cut, the sheet naming the
+            blade. For another saw, ask the person to measure the width of a cut it makes."""),
+        _say("beam-saws", "A panel cut on a shop's beam saw", """
+            A shop's beam saw (scie à plat) that states no cut is refused by the rule: the part links sawn_with
+            the blade the service's payload names, tools/usual-panel-sizing-blade, whose cut is the widest of
+            the beam-saw blades two catalogues list; once the shop gives its cut, state it on a tool of the
+            piece's own.""", "tools/usual-panel-sizing-blade"),
+    ])
+
+
 def knowledge() -> list[Node]:
     """The branches to merge beside furniture-design's: the sources and the saws."""
     return [Node(id=SOURCES, kind="", children=with_authority(sources() + catalogue_sources(), AUTHORITY)),
-            Node(id=TOOLS, kind="", children=tools())]
+            Node(id=TOOLS, kind="", children=tools()), guidance()]
