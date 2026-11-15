@@ -35,6 +35,21 @@
     "digest": "f904e24c4775"
   },
   {
+    "path": "a-saws-model-is-data-on-its-node-sized-from-its-makers-print-and-image",
+    "kind": "decision",
+    "digest": "eb744b960263"
+  },
+  {
+    "path": "a-saws-model-is-data-on-its-node-sized-from-its-makers-print-and-image/a-drawing-function-per-saw",
+    "kind": "alternative",
+    "digest": "b19bd0aa3cc0"
+  },
+  {
+    "path": "a-saws-model-is-data-on-its-node-sized-from-its-makers-print-and-image/a-model-for-every-saw",
+    "kind": "alternative",
+    "digest": "ddc2fcc582b4"
+  },
+  {
     "path": "a-usual-blade-is-a-tool-of-its-own",
     "kind": "decision",
     "digest": "8941df264515"

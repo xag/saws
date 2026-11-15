@@ -111,6 +111,31 @@ def entries() -> list[Node]:
                      "3.5 mm is the body of the 4.8 and 5.2 mm blades, and the cut of one CMT blade among 36."),
             ],
         ),
+        Node(
+            id="a-saws-model-is-data-on-its-node-sized-from-its-makers-print-and-image", kind="decision",
+            name="A saw's 3D model is data on its tool node (payload model, furniture-design's solids format), "
+                 "as lamello-unofficial puts the Zeta P2's: sized from what its maker prints (the blade's length "
+                 "and thickness, from the documents) and, for what the maker prints nowhere (the blade's height at "
+                 "heel and toe, the handle's outline and hand hole), measured from the maker's own product image, "
+                 "scaled by the printed length, with the image kept by name and sha256 and the uncertainty stated in "
+                 "the module's docstring (saws/models.py). A saw that cuts on one stroke only states it (payload "
+                 "stroke, push or pull), and a hand saw follows tools/crosscut-saw, whose method it is used by",
+            links={"rests_on": ["a-saw-states-only-what-its-maker-prints"]},
+            payload={"decided_on": "2026-11-15",
+                     "the_owner": "Add a 3D model of the Bahco ERGO Superior 2600-22 handsaw to the saws package, "
+                                  "the way lamello-unofficial models the Zeta P2",
+                     "why": "The instructions draw a tool from the model on its node and know no tool of their own, "
+                            "so a saw is drawn only when its package carries a model, and a model is a figure like "
+                            "any other that a reader may ask the source of. The image is the maker's own, kept "
+                            "privately in the furniture repo's sources/saws; the 2600-22 is drawn with the 2600-19's "
+                            "heights at heel and toe, no image of the 22 showing them."},
+            children=[
+                _alt("a-drawing-function-per-saw", "Draw each saw in code, in the instructions",
+                     "The instructions' drawing code is to know no tool: a-tools-steps-are-drawn-from-its-node."),
+                _alt("a-model-for-every-saw", "Model every saw in the package",
+                     "A model is sized from its maker's print and image; the machines have no stroke to draw."),
+            ],
+        ),
     ]
 
 

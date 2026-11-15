@@ -2,7 +2,9 @@
 width its blade takes out and of the thickest board it cuts through. Unofficial: neither the makers
 wrote nor endorsed it.
 
-A saw is one `tool` under tools/, payload saw_kind, its params derived from the clauses of its
+A saw is one `tool` under tools/, payload saw_kind (and stroke, push or pull, for a saw that cuts on one
+only; a hand saw follows furniture-design's tools/crosscut-saw, whose method it is used by, and the two
+Bahco ones carry their model, saws/models.py), its params derived from the clauses of its
 maker's documents:
 
 - kerf (mm): the cutting width of the blade the saw comes with, as its maker prints it;
@@ -33,6 +35,8 @@ from pathlib import Path
 from quern.provenance import Quantity
 from quern.tree import Node
 from furniture_design.knowledge import with_authority
+
+from . import models
 
 HERE = Path(__file__).parent
 
@@ -109,6 +113,13 @@ SAWS = [
 ]
 SOURCES = "sources"
 TOOLS = "tools"
+
+# the saws that cut on one stroke only, said in their payload: a hand saw pushes, a pull saw pulls
+STROKES = {"hand saw": "push", "pull saw": "pull"}
+# saw id: the blade length its maker prints (mm), for the saws drawn from their maker's image (models.py)
+MODELLED = {"bahco-2600-22": 550, "bahco-2600-19": 475}
+# the general tool a saw's method is that of (furniture-design's)
+FOLLOWS = {"hand saw": [f"{TOOLS}/crosscut-saw"]}
 
 # saw id: the clause its maker prints the diameter of its blade in, for the saws whose maker prints no blade's cut
 BLADES = {
@@ -273,13 +284,18 @@ def tools() -> list[Node]:
                   for p, ref in refs.items()}
         payload = {"maker": documents()[next(iter(refs.values())).split("/")[0]]["publisher"],
                    "saw_kind": kind, "does": does}
+        if kind in STROKES:
+            payload["stroke"] = STROKES[kind]
+        if id_ in MODELLED:
+            payload["model"] = models.ergo_superior_2600(MODELLED[id_])
         if id_ in BLADES:
             d = int(_value(BLADES[id_])["value"])
             payload["blade"] = {"diameter_mm": d, "per": f"{SOURCES}/{BLADES[id_]}",
                                 "usual": f"{TOOLS}/usual-blade-{d}" if d in usual() else None}
         read = [*refs.values(), *([BLADES[id_]] if id_ in BLADES else [])]
         per = sorted({f"{SOURCES}/{ref.rsplit('/', 1)[0]}" for ref in read})
-        out.append(Node(id=id_, kind="tool", name=name, payload=payload, params=params, links={"per": per}))
+        links = {"per": per, **({"follows": FOLLOWS[kind]} if kind in FOLLOWS else {})}
+        out.append(Node(id=id_, kind="tool", name=name, payload=payload, params=params, links=links))
     return out + usual_tools() + [panel_tool()]
 
 
