@@ -52,9 +52,9 @@ def leitz(text: str, pages: list[int]) -> list[list]:
 
 @reading
 def cmt(text: str, pages: list[int]) -> list[list]:
-    """Columns D, B (bore), pin hole, Z, K (kerf), P (plate): the first Z K P after the bore. Rows under a
-    heading for diamond (DP) blades, metal or a garden trimmer are left out; a row whose numbers the text
-    layer prints on its heading's line (p. 35, the 136 mm cordless blades) is not read."""
+    """Columns D, B (bore, two or three digits), pin hole, Z, K (kerf), P (plate): the first Z K P after the
+    bore. Rows under a heading for diamond (DP) blades, metal or a garden trimmer are left out; a row whose
+    numbers the text layer prints on its heading's line (p. 35, the 136 mm cordless blades) is not read."""
     out = []
     for i, page in enumerate(_pages(text), 1):
         if i in pages:
@@ -62,7 +62,7 @@ def cmt(text: str, pages: list[int]) -> list[list]:
             for line in page.split("\n"):
                 if "Saw Blades" in line and not re.match(r"^\s*\d", line):
                     head = line
-                m = re.match(r"^\s*(\d{2,3})\s+(\d{2}(?:,\d+)?)\b.*?\s(\d{1,3})\s+(\d,\d)\s+(\d,\d)\s", line)
+                m = re.match(r"^\s*(\d{2,3})\s+(\d{2,3}(?:,\d+)?)\b.*?\s(\d{1,3})\s+(\d,\d)\s+(\d,\d)\s", line)
                 if m and not re.search(r"DP |Garden|Metal|Compound", head):
                     out.append([i, int(m[1]), _mm(m[4]), _mm(m[5])])
     return out

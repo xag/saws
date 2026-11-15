@@ -87,6 +87,30 @@ def entries() -> list[Node]:
                      "A cut wider than counted eats into the parts; the widest only spends a little board."),
             ],
         ),
+        Node(
+            id="a-beam-saws-usual-blade-is-one-tool-whatever-its-diameter", kind="decision",
+            name="The main blade of a beam saw (a panel sizing saw with a pressure beam, the shops' scie à plat) is "
+                 "one tool, usual-panel-sizing-blade, whatever its diameter: its max_kerf is the widest cut among the "
+                 "panel sizing main blades at every diameter that both Leitz (Lexicon 7, 1.4.1 to 1.4.3) and CMT "
+                 "(2017, p. 25) list, 250 to 550 mm, 5.2 mm; its payload's usual gives the narrowest (3.2) and the "
+                 "commonest (4.4). A shop's cutting service that prints no cut names it as the blade a design is "
+                 "sawn with",
+            links={"rests_on": ["a-usual-blade-is-a-tool-of-its-own"]},
+            payload={"decided_on": "2026-11-15",
+                     "the_owner": "Je suppose que c'est 3.5 mm c'est un standard non? / As tu intégré ces infos "
+                                  "riches dont tu me parles là",
+                     "why": "A shop says its saw is a scie à plat and names no blade, so the diameter a usual cut is "
+                            "known by for a circular saw is not to be had. The widest cut of the blades two "
+                            "catalogues list leaves room for any of them, as for the circular saws' usual blades."},
+            children=[
+                _alt("a-panel-blade-per-diameter", "One usual panel sizing blade per diameter, as for circular saws",
+                     "No shop read prints its beam saw's diameter, so no design could name one."),
+                _alt("the-commonest-cut", "Count the commonest cut, 4.4 mm",
+                     "A 4.8 or 5.2 mm blade, which both catalogues list, would leave the parts shorter than drawn."),
+                _alt("three-and-a-half", "Count 3.5 mm",
+                     "3.5 mm is the body of the 4.8 and 5.2 mm blades, and the cut of one CMT blade among 36."),
+            ],
+        ),
     ]
 
 

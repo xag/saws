@@ -14,7 +14,7 @@ from quern import Quern, run_rules
 from furniture_design.knowledge import knowledge as general, merge
 from furniture_design.package import PACKAGE
 from readings import READINGS
-from saws import BLADES, SAWS, blades, catalogues, knowledge, usual
+from saws import BLADES, PANEL_BLADE, SAWS, blades, catalogues, knowledge, usual
 from test_values import _tree, _verdict
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -40,7 +40,8 @@ def test_every_row_listed_is_read_from_the_catalogue_fetched_and_none_is_left_ou
 def test_rows_read_by_hand_are_listed():
     # (page, D, kerf, body) as each catalogue prints them, read off the page
     rows = {"freud-portable-finder": [4, 150, 2.4, 1.6], "leitz-lexicon-7-sawing": [81, 160, 1.6, 1.1], "leitz-lexicon-7-sawing-chart": [80, 160, 1.8, 1.2],
-            "cmt-catalogue-2017": [37, 120, 1.8, 1.2]}
+            "cmt-catalogue-2017": [37, 120, 1.8, 1.2], "leitz-lexicon-7-panel-sizing": [44, 500, 5.2, 3.5],
+            "cmt-catalogue-2017-panel-sizing": [28, 550, 5.2, 3.5]}  # the last one's bore is 100 mm
     for c, row in rows.items():
         assert row in catalogues()[c.removesuffix("-chart")]["rows"], c
 
@@ -82,3 +83,14 @@ def test_the_catalogues_and_usual_saws_break_none_of_furniture_designs_rules():
            {f"tools/{s[0]}" for s in SAWS}
     broken = [r for r in run_rules(tree, "") if not r.ok and any(r.node == p or r.node.startswith(p + "/") for p in ours)]
     assert not broken, broken
+
+
+def test_a_beam_saws_usual_blade_cuts_the_widest_of_the_panel_sizing_blades_two_catalogues_list():
+    u = usual("panel saw")
+    assert 600 not in u and 550 in u  # Leitz alone lists 600 to 750 mm, for the largest machines
+    assert all(c.endswith("-panel-sizing") for cs in u.values() for c in cs)
+    assert not any(c.endswith("-panel-sizing") for cs in usual().values() for c in cs)
+    blade = {n.id: n for n in knowledge()[1].children}[PANEL_BLADE]
+    assert blade.params["max_kerf"].value == 5.2
+    assert {k: blade.payload["usual"][k] for k in ("narrowest", "commonest")} == {"narrowest": 3.2, "commonest": 4.4}
+    assert _verdict(_tree(f"tools/{PANEL_BLADE}"), "a-part-is-sawn-with-a-saw-that-states-its-cut") == "holds"

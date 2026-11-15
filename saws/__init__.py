@@ -26,6 +26,7 @@ are kept private and tests/test_values.py checks every value against them.
 from __future__ import annotations
 
 import json
+from collections import Counter
 from functools import lru_cache
 from pathlib import Path
 
@@ -143,10 +144,11 @@ def blades(catalogue: str) -> dict[int, dict]:
     return out
 
 
-def usual() -> dict[int, dict[str, dict]]:
-    """Each usual blade diameter, {catalogue: its blades of it}: a diameter USUAL_AMONG catalogues list."""
+def usual(machine: str = "circular saw") -> dict[int, dict[str, dict]]:
+    """Each usual blade diameter of a kind of machine, {catalogue: its blades of it}: a diameter USUAL_AMONG of
+    that machine's catalogues list."""
     by: dict[int, dict[str, dict]] = {}
-    for c in catalogues():
+    for c in (c for c, v in catalogues().items() if v["machine"] == machine):
         for d, b in blades(c).items():
             by.setdefault(d, {})[c] = b
     return {d: cs for d, cs in sorted(by.items()) if len(cs) >= USUAL_AMONG}
@@ -230,6 +232,34 @@ def usual_tools() -> list[Node]:
     return out
 
 
+PANEL_BLADE = "usual-panel-sizing-blade"
+
+
+def panel_tool() -> Node:
+    """The main blade of a panel sizing saw with a pressure beam (a beam saw, which lays the board flat), whatever
+    its diameter: its cut the widest of the blades at every diameter that USUAL_AMONG panel sizing catalogues list,
+    for a shop's cutting service that names no blade."""
+    u = usual("panel saw")
+    cs = [(d, c, b) for d, by in u.items() for c, b in by.items()]
+    widest = max(b["widest"] for _, _, b in cs)
+    narrowest = min(b["narrowest"] for _, _, b in cs)
+    cuts = Counter(row[2] for c in {c for _, c, _ in cs} for row in catalogues()[c]["rows"] if row[1] in u)
+    n, makers = sum(cuts.values()), ", ".join(sorted({catalogues()[c]["publisher"] for _, c, _ in cs}))
+    commonest, times = cuts.most_common(1)[0]
+    q = Quantity(value=widest, unit="mm", provenance="derived", grounded=True,
+                 derived_from=[f"{SOURCES}/{c}/d{d}/widest_kerf" for d, c, _ in cs],
+                 note=f"the widest cut of the {n} panel sizing blades of {min(u)} to {max(u)} mm that {makers} "
+                      f"list (the narrowest {narrowest}, {times} of them {commonest})")
+    return Node(id=PANEL_BLADE, kind="tool", name="A beam saw's main blade",
+                payload={"maker": "any", "saw_kind": "panel saw",
+                         "does": "any panel sizing saw that cuts a board lying flat under a pressure beam (a beam "
+                                 "saw, scie à plat), whatever its blade's diameter",
+                         "usual": {"narrowest": narrowest, "widest": widest, "commonest": commonest,
+                                   "blades": n, "of_commonest": times,
+                                   "diameters_mm": [min(u), max(u)]}},
+                params={"max_kerf": q}, links={"per": sorted({f"{SOURCES}/{c}/d{d}" for d, c, _ in cs})})
+
+
 def tools() -> list[Node]:
     """One tool per saw, each param derived from the clause its maker printed it in, then the usual blades. A saw
     whose maker prints no blade's cut but its blade's diameter names, in its payload's blade, that diameter and
@@ -249,7 +279,7 @@ def tools() -> list[Node]:
         read = [*refs.values(), *([BLADES[id_]] if id_ in BLADES else [])]
         per = sorted({f"{SOURCES}/{ref.rsplit('/', 1)[0]}" for ref in read})
         out.append(Node(id=id_, kind="tool", name=name, payload=payload, params=params, links={"per": per}))
-    return out + usual_tools()
+    return out + usual_tools() + [panel_tool()]
 
 
 def knowledge() -> list[Node]:

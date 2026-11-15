@@ -1,5 +1,25 @@
 [
   {
+    "path": "a-beam-saws-usual-blade-is-one-tool-whatever-its-diameter",
+    "kind": "decision",
+    "digest": "2f4e8cf5e85e"
+  },
+  {
+    "path": "a-beam-saws-usual-blade-is-one-tool-whatever-its-diameter/a-panel-blade-per-diameter",
+    "kind": "alternative",
+    "digest": "1d3b6e348282"
+  },
+  {
+    "path": "a-beam-saws-usual-blade-is-one-tool-whatever-its-diameter/the-commonest-cut",
+    "kind": "alternative",
+    "digest": "1d73f2efcfe0"
+  },
+  {
+    "path": "a-beam-saws-usual-blade-is-one-tool-whatever-its-diameter/three-and-a-half",
+    "kind": "alternative",
+    "digest": "f5c10b15e307"
+  },
+  {
     "path": "a-saw-states-only-what-its-maker-prints",
     "kind": "decision",
     "digest": "bd8b57053214"
