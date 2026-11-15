@@ -32,6 +32,7 @@ from pathlib import Path
 
 from quern.provenance import Quantity
 from quern.tree import Node
+from furniture_design.knowledge import with_authority
 
 HERE = Path(__file__).parent
 
@@ -282,7 +283,40 @@ def tools() -> list[Node]:
     return out + usual_tools() + [panel_tool()]
 
 
+# Who stands behind each source (furniture-design's AUTHORITIES).
+AUTHORITY = {
+    "festool-ts-55-manual": "maker",
+    "bosch-gkt-55-gce-page": "maker",
+    "bosch-gkt-55-gce-manual": "maker",
+    "makita-sp6000-manual": "maker",
+    "bosch-gks-190-manual": "maker",
+    "makita-hs7601-manual": "maker",
+    "dewalt-dwe560-manual": "maker",
+    "bosch-gts-635-216-page": "maker",
+    "bosch-blade-2-608-838-410-page": "maker",
+    "makita-mlt100-manual": "maker",
+    "dewalt-dwe7492-manual": "maker",
+    "metabo-kgs-m-manual": "maker",
+    "makita-ls1018l-manual": "maker",
+    "bosch-gst-160-manual": "maker",
+    "makita-4350fct-sheet": "maker",
+    "striebig-catalogue-fr": "maker",
+    "holz-her-sector-brochure": "maker",
+    "elcon-d-sheet": "maker",
+    "z-saw-iii-265-page": "maker",
+    "z-saw-iii-300-page": "maker",
+    "gyokucho-blue-hard-page": "maker",
+    "gyokucho-orizuru-dozuki-240-page": "maker",
+    "bahco-2600-page": "maker",
+    "freud-portable-finder": "maker",
+    "leitz-lexicon-7-sawing": "maker",
+    "cmt-catalogue-2017": "maker",
+    "leitz-lexicon-7-panel-sizing": "maker",
+    "cmt-catalogue-2017-panel-sizing": "maker",
+}
+
+
 def knowledge() -> list[Node]:
     """The branches to merge beside furniture-design's: the sources and the saws."""
-    return [Node(id=SOURCES, kind="", children=sources() + catalogue_sources()),
+    return [Node(id=SOURCES, kind="", children=with_authority(sources() + catalogue_sources(), AUTHORITY)),
             Node(id=TOOLS, kind="", children=tools())]
